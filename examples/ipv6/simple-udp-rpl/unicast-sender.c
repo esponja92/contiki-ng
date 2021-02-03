@@ -111,6 +111,7 @@ PROCESS_THREAD(unicast_sender_process, ev, data)
   etimer_set(&periodic_timer, SEND_INTERVAL);
   while(1) {
 
+    // envia mensagem para o receiver
     PROCESS_WAIT_EVENT_UNTIL(etimer_expired(&periodic_timer));
     etimer_reset(&periodic_timer);
     etimer_set(&send_timer, SEND_TIME);

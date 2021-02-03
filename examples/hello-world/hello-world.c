@@ -47,6 +47,10 @@ AUTOSTART_PROCESSES(&hello_world_process);
 PROCESS_THREAD(hello_world_process, ev, data)
 {
   static struct etimer timer;
+  static int teste[500];
+
+  teste[0] = 2;
+  teste[1] = 2;
 
   PROCESS_BEGIN();
 
@@ -55,6 +59,7 @@ PROCESS_THREAD(hello_world_process, ev, data)
 
   while(1) {
     printf("Hello, world\n");
+    printf("tamanho do vetor teste: %d\n", sizeof(teste));
 
     /* Wait for the periodic timer to expire and then restart the timer. */
     PROCESS_WAIT_EVENT_UNTIL(etimer_expired(&timer));
